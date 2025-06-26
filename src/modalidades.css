@@ -1,0 +1,60 @@
+.modalidades {
+    text-align: center;
+    padding: 20px;
+}
+
+.modalidades h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.modalidades p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.modalidade-card {
+    height: 75%;
+    display: inline-block;
+    width: 22%;
+    margin: 1%;
+    background-color: #f9f9f9;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+.modalidade-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.modalidade-card h2 {
+    font-size: 1.5em;
+    margin: 15px 0;
+}
+
+.modalidade-card p {
+    font-size: 1em;
+    padding: 0 10px;
+}
+
+.modalidade-card a {
+    display: inline-block;
+    margin: 15px 0;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+    text-align: center;
+    width: calc(100% - 40px); /* Ajusta a largura do botão */
+}
+
+.modalidade-card a:hover {
+    background-color: rgb(195, 195, 195);
+}

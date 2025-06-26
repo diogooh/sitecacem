@@ -1,0 +1,136 @@
+.admin-container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 80px auto 20px;
+}
+
+.admin-container h2 {
+    color: #004080;
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.pending-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.pending-table thead {
+    background-color: #004080;
+    color: white;
+}
+
+.pending-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.pending-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #333;
+}
+
+.pending-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.pending-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Botões de ação */
+.btn-approve, .btn-reject {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 5px;
+}
+
+.btn-approve {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-approve:hover {
+    background-color: #218838;
+}
+
+.btn-reject {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-reject:hover {
+    background-color: #c82333;
+}
+
+/* Status badges */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-pending {
+    background-color: #ffd700;
+    color: #000;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .pending-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .admin-container {
+        padding: 20px 10px;
+    }
+
+    .btn-approve, .btn-reject {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Mensagens de feedback */
+.alert-success, .alert-error {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    animation: fadeOut 5s forwards;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+} 

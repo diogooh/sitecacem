@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Header do Perfil */
+.profile-header {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.profile-cover {
+    background: linear-gradient(135deg, #004080 0%, #002b57 100%);
+    height: 200px;
+    position: relative;
+}
+
+.profile-photo-container {
+    position: absolute;
+    bottom: -50px;
+    left: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    margin: 0;
+}
+
+.photo-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: flex-start;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.change-photo-btn, .save-photo-btn, .cancel-photo-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.change-photo-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.save-photo-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+.cancel-photo-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.change-photo-btn:hover, .save-photo-btn:hover, .cancel-photo-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.profile-info-header {
+    padding: 100px 25px 30px;
+}
+
+.profile-info-header h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.profile-info-header p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Conteúdo do Perfil */
+.profile-content {
+    display: grid;
+    gap: 30px;
+}
+
+.profile-section {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section h2 {
+    color: #004080;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* Grid de Informações */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.info-item {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.info-item label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.info-item p {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Add styling for input fields within info-item */
+.info-item input[type="text"],
+.info-item input[type="date"],
+.info-item input[type="email"],
+.info-item input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.info-item input:disabled {
+    background-color: #e9ecef;
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+.info-item input:focus:not(:disabled) {
+    border-color: #004080;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 64, 128, 0.25);
+}
+
+/* Botões */
+.edit-btn, .change-password-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edit-btn {
+    background: #004080;
+    color: white;
+    margin-top: 20px;
+}
+
+.edit-btn:hover {
+    background: #003366;
+    transform: translateY(-2px);
+}
+
+.change-password-btn {
+    background: #f8f9fa;
+    color: #004080;
+    border: 1px solid #004080;
+}
+
+.change-password-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Informações Médicas */
+.medical-info {
+    display: grid;
+    gap: 15px;
+}
+
+.medical-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.medical-item i {
+    font-size: 24px;
+    color: #004080;
+}
+
+.medical-item h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.medical-item p {
+    font-size: 12px;
+    color: #666;
+}
+
+.btn-download {
+    margin-left: auto;
+    color: #004080;
+    text-decoration: none;
+}
+
+/* Opções de Segurança */
+.security-options {
+    display: flex;
+    gap: 15px;
+}
+
+.enable-2fa-btn {
+    background: #28a745;
+    color: white;
+}
+
+.change-password-btn:hover, .enable-2fa-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .profile-photo-container {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .profile-info-header {
+        text-align: center;
+        padding-top: 70px;
+    }
+
+    .security-options {
+        flex-direction: column;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+} 

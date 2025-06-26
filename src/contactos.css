@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-container {
+    max-width: 800px;
+    width: 90%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    margin: 120px auto; /* Garante centralização vertical */
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px;
+    background: #FFC107;
+    border: none;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e0a800;
+}
+
+textarea {
+    resize: none;
+}
+
+
+/* Mensagens de erro e sucesso */
+.alert {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.error-message {
+    background: #ff4d4d;
+    color: white;
+}
+
+.success-message {
+    background: #4CAF50;
+    color: white;
+}
+
+/* Animação para aparecer suavemente */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Informações de contacto */
+.contact-info {
+    margin-top: 30px;
+    text-align: left;
+    padding: 10px;
+}
+
+.contact-info h3 {
+    color: #007BFF;
+}
+
+/* Mapa */
+.map-container {
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
