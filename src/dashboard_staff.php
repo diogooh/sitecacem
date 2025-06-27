@@ -453,13 +453,13 @@ if (isset($_SESSION['alert'])) {
                         <h3><i class="fas fa-bolt"></i> Ações Rápidas</h3>
                     </div>
                     <div class="card-content">
-                        <a href="adicionar_treino.php" class="btn-primary">
+                        <a href="gerir_treinos.php" class="btn-primary">
                             <i class="fas fa-plus"></i> Novo Treino
                         </a>
-                        <a href="adicionar_jogo.php" class="btn-primary">
+                        <a href="gerir_jogos.php" class="btn-primary">
                             <i class="fas fa-plus"></i> Novo Jogo
                         </a>
-                        <a href="enviar_mensagem.php" class="btn-primary">
+                        <a href="mensagens_staff.php" class="btn-primary">
                             <i class="fas fa-envelope"></i> Nova Mensagem
                         </a>
                     </div>

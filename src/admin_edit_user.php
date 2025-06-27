@@ -281,7 +281,7 @@ $conn->close();
                 <!-- Logo ou imagem do utilizador -->
                 <!-- <img src="../img/logoclub.png" alt="Logo"> -->
                 <h3>Administração</h3>
-                <p>Painel de Controle</p>
+                <p>Painel de Controlo</p>
             </div>
             <div class="staff-menu">
                 <a href="admin_dashboard.php" class="menu-item active">

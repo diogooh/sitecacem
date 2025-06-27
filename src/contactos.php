@@ -2,6 +2,46 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+require_once __DIR__ . '/../vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+$mensagem = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'], $_POST['email'], $_POST['mensagem'])) {
+    $nome = trim($_POST['nome']);
+    $email = trim($_POST['email']);
+    $texto = trim($_POST['mensagem']);
+
+    // Validação simples
+    if ($nome && filter_var($email, FILTER_VALIDATE_EMAIL) && $texto) {
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'antunesdiogo06@gmail.com';
+            $mail->Password = 'rfde ypaa agsx ohik'; // Palavra-passe de app do Gmail
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
+            $mail->setFrom($email, $nome);
+            $mail->addAddress('antunesdiogo06@gmail.com', 'ACC Contacto');
+            $mail->CharSet = 'UTF-8';
+            $mail->isHTML(true);
+            $mail->Subject = 'Novo contacto do site ACC';
+            $mail->Body = "<strong>Nome:</strong> " . htmlspecialchars($nome) . "<br>"
+                        . "<strong>Email:</strong> " . htmlspecialchars($email) . "<br>"
+                        . "<strong>Mensagem:</strong><br>" . nl2br(htmlspecialchars($texto));
+            $mail->send();
+            $mensagem = '<span class="success-message">Mensagem enviada com sucesso! Obrigado pelo seu contacto.</span>';
+        } catch (Exception $e) {
+            $mensagem = '<span class="error-message">Erro ao enviar mensagem. Tente novamente mais tarde.</span>';
+        }
+    } else {
+        $mensagem = '<span class="error-message">Por favor, preencha todos os campos corretamente.</span>';
+    }
+}
 ?>
 
 <!DOCTYPE html>

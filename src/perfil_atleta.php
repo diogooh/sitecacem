@@ -68,7 +68,7 @@ $stmt->close();
             <div class="logout-section">
                 <form action="logout.php" method="post">
                     <button type="submit" class="logout-btn">
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                        <i class="fas fa-sign-out-alt"></i> Terminar Sessão
                     </button>
                 </form>
             </div>
@@ -188,7 +188,7 @@ $stmt->close();
                             <div class="security-options">
                                 <button type="button" class="change-password-btn">
                                     <i class="fas fa-lock"></i>
-                                    Alterar Senha
+                                    Alterar Palavra-passe
                                 </button>
                             </div>
                         </div>
@@ -275,8 +275,8 @@ $stmt->close();
                 alert('Erro: ' + error);
             } else if (success === 'profile_updated') {
                 alert('Perfil atualizado com sucesso!');
-            } else if (success === 'password_updated') {
-                alert('Senha alterada com sucesso!');
+            } else if (success === 'palavra_passe_atualizada') {
+                alert('Palavra-passe alterada com sucesso!');
             }
 
             // Funcionalidade do modal de alteração de senha
@@ -313,12 +313,12 @@ $stmt->close();
                 const confirmPassword = document.getElementById('confirm_password').value;
 
                 if (newPassword !== confirmPassword) {
-                    alert('As senhas não coincidem!');
+                    alert('As palavras-passe não coincidem!');
                     return;
                 }
 
                 if (newPassword.length < 8) {
-                    alert('A nova senha deve ter pelo menos 8 caracteres!');
+                    alert('A nova palavra-passe deve ter pelo menos 8 caracteres!');
                     return;
                 }
 
@@ -331,27 +331,27 @@ $stmt->close();
     <div id="changePasswordModal" class="modal" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Alterar Senha</h2>
+                <h2>Alterar Palavra-passe</h2>
                 <span class="close">&times;</span>
             </div>
             <form id="change-password-form" action="change_password.php" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="current_password">Senha Atual</label>
+                        <label for="current_password">Palavra-passe Atual</label>
                         <input type="password" id="current_password" name="current_password" required>
                     </div>
                     <div class="form-group">
-                        <label for="new_password">Nova Senha</label>
+                        <label for="new_password">Nova Palavra-passe</label>
                         <input type="password" id="new_password" name="new_password" required>
                     </div>
                     <div class="form-group">
-                        <label for="confirm_password">Confirmar Nova Senha</label>
+                        <label for="confirm_password">Confirmar Nova Palavra-passe</label>
                         <input type="password" id="confirm_password" name="confirm_password" required>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary" id="cancelPasswordChange">Cancelar</button>
-                    <button type="submit" class="btn-primary">Salvar Alterações</button>
+                    <button type="submit" class="btn-primary">Guardar Alterações</button>
                 </div>
             </form>
         </div>

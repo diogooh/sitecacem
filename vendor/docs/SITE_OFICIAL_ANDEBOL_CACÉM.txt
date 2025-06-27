@@ -1,0 +1,37 @@
+SITE OFICIAL | ANDEBOL CACÉM
+
+TÍTULO:
+              Andebol | Atlético Cacém
+
+Objetivo principal do projeto demonstrar o clube ao público.
+
+Página Inicial 
+ -  História do Clube
+ -  Imagens/Videos a promover o desporto
+
+Página Sobre nós
+ -  Memórias/Conquistas
+
+Loja
+Produtos que a loja irá vender:
+- Camisas de Jogo oficiais;
+- Cachecol;
+- 1 KIT (SACO DE PANO, CANETA E CANECA).
+(Isto tudo com o objetivo de angariar dinheiro para pagar equipamentos ou torneios as pessoas
+que necessitam de ajuda para pagar).
+
+Página Contactos
+- Formulário que o utilizador consegue preencher com o email, telefone, nome, alguma mensagem
+com alguma questão.
+
+Sistema de Login/Registo
+Se perder a sua palavra-passe consegue recuperar através do email
+
+Área de Administrador
+- Gestão de Utilizadores novos
+- Gestão de treinos
+- Gestão de horários
+- Gestão de convocatória para os jogos
+- Edição dos conteúdos das páginas (noticias novas para ir para a página inicial)
+- Gestão da Loja
+

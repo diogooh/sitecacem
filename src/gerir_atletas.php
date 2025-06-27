@@ -777,8 +777,16 @@ $atletas = $stmt->get_result();
                 </a>
                 <?php endif; ?>
             </div>
+            <div class="logout-section">
+                <form action="logout.php" method="post">
+                    <button type="submit" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
         </div>
-
+        
+    
         <!-- Conteúdo Principal -->
         <div class="dashboard-content">
             <div class="page-header">
@@ -847,7 +855,7 @@ $atletas = $stmt->get_result();
                                 <span class="info-value"><?php echo htmlspecialchars($atleta['email']); ?></span>
                             </div>
                             <div class="atleta-info-row">
-                                <span class="info-label">Contacto:</span>
+                                <span class="info-label">Telemóvel:</span>
                                 <span class="info-value"><?php echo htmlspecialchars($atleta['telefone']); ?></span>
                             </div>
                             <div class="atleta-info-row">
@@ -894,8 +902,8 @@ $atletas = $stmt->get_result();
                             <input type="password" id="password" name="password" required>
                         </div>
                         <div class="form-group">
-                            <label for="telefone">Telefone</label>
-                            <input type="text" id="telefone" name="telefone" maxlength="9" pattern="[0-9]{9}" title="Por favor, insira um número de telefone válido (9 dígitos)" required>
+                            <label for="telefone">Telemóvel</label>
+                            <input type="tel" id="telefone" name="telefone" pattern="[0-9]{9}" maxlength="9" required>
                         </div>
                         <div class="form-group">
                             <label for="data_nascimento">Data de Nascimento</label>

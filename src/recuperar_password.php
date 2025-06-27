@@ -60,12 +60,12 @@ session_start();
 <body>
 <?php include 'nav.php'; ?>
     <div class="recovery-container">
-        <h2>Recuperar Password</h2>
+        <h2>Recuperar Palavra-passe</h2>
         <form method="post" action="enviar_recovery.php">
             <input type="email" name="email" placeholder="O seu email" required>
             <button type="submit">Enviar link de recuperação</button>
         </form>
-        <a href="login.php">Voltar ao login</a>
+        <a href="login.php">Voltar ao início de sessão</a>
     </div>
     <?php include 'footer.php'; ?>
 </body>

@@ -1,0 +1,19 @@
+pagina sócios
+
+api buscar os jogos das semanas
+
+pagina inicial
+modalidades - (Equipa Seniores)Futebol , Formação Futebol, (Equipa Seniores)Andebol, Formação Andebol    | Formulario em cada modalidade para chamar para jogar. email futebol | email andebol
+
+sócios
+sobre nos
+entrar
+
+direção loja secretaria / acesso ao softingal.com
+
+departamento performance - treinos personalizados, treinos ginásio, análise de jogo
+
+pagina cookies
+pagina politica de privacidade - pagina 505 - pagina de erros - pagina manutenção - questão da rapidez cache
+
+https chave

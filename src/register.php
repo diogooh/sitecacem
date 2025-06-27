@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - ACC</title>
+    <title>Registo - ACC</title>
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -95,8 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="approval-notice">
                         <i class="fas fa-info-circle"></i>
                         <div class="notice-content">
-                            <h4>Registro para Membros do Clube (Atletas, Treinadores, Dirigentes, Administradores)</h4>
-                            <p>Após o registro, sua conta ficará pendente de aprovação por um administrador do clube. Você receberá um email assim que sua conta for ativada e seu tipo de usuário for definido.</p>
+                            <h4>Registo para Membros do Clube (Atletas, Treinadores, Dirigentes, Administradores)</h4>
+                            <p>Após o registo, a sua conta ficará pendente de aprovação por um administrador do clube. Irá receber um email assim que a sua conta for ativada e o seu tipo de utilizador for definido.</p>
                         </div>
                     </div>
 
@@ -113,11 +113,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password">Palavra-passe</label>
                                 <input type="password" id="password" name="password" required>
                             </div>
                             <div class="form-group">
-                                <label for="confirm_password">Confirmar Password</label>
+                                <label for="confirm_password">Confirmar Palavra-passe</label>
                                 <input type="password" id="confirm_password" name="confirm_password" required>
                             </div>
                         </div>
@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="date" id="data_nascimento" name="data_nascimento" required>
                             </div>
                             <div class="form-group">
-                                <label for="telefone">Telefone</label>
+                                <label for="telefone">Telemóvel</label>
                                 <input type="tel" id="telefone" name="telefone" pattern="[0-9]{9}" maxlength="9" required>
                             </div>
                         </div>
@@ -163,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             const password = document.getElementById('password');
             const confirm = document.getElementById('confirm_password');
             if (password.value !== confirm.value) {
-                confirm.setCustomValidity('As passwords não coincidem');
+                confirm.setCustomValidity('As palavras-passe não coincidem');
             } else {
                 confirm.setCustomValidity('');
             }

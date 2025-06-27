@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Nova Password</title>
+    <title>Nova Palavra-passe</title>
     <style>
         body { font-family: Arial, sans-serif; background: linear-gradient(120deg, #f5f5f5 60%, #007bff11 100%); }
         .container { max-width: 400px; margin: 60px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 12px #0001; }
@@ -94,14 +94,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <div class="container">
-    <h2>Definir Nova Password</h2>
+    <h2>Definir Nova Palavra-passe</h2>
     <?php if (isset($erro)) echo '<div class="erro">' . $erro . '</div>'; ?>
     <form method="post">
-        <label>Nova Password:</label>
+        <label>Nova Palavra-passe:</label>
         <input type="password" name="senha" required minlength="6">
-        <label>Confirmar Password:</label>
+        <label>Confirmar Palavra-passe:</label>
         <input type="password" name="confirma" required minlength="6">
-        <input type="submit" value="Alterar Password">
+        <input type="submit" value="Alterar Palavra-passe">
     </form>
 </div>
 </body>

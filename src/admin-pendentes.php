@@ -306,7 +306,7 @@ $pendentes = $stmt->get_result();
                         </tbody>
                     </table>
                 <?php else: ?>
-                    <p>Não há registros pendentes de aprovação.</p>
+                    <p>Não há registos pendentes de aprovação.</p>
                 <?php endif; ?>
             </div>
         </div>

@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit(); // Apenas redirecionar se não houver mensagem de erro do default
             }
         } else {
-            $mensagem = "Senha incorreta!";
+            $mensagem = "Palavra-passe incorreta!";
         }
     } else {
         $mensagem = "Utilizador não encontrado!";
@@ -102,7 +102,7 @@ $conn->close();
                 <img src="../img/logoclub.png" alt="Logo ACC" class="logo">
             </div>
             <h2>Bem-vindo</h2>
-            <p class="subtitle">Entre com suas credenciais para acessar sua conta</p>
+            <p class="subtitle">Introduza as suas credenciais para aceder à sua conta</p>
             
             <form method="post" action="">
                 <div class="input-group">
@@ -111,7 +111,7 @@ $conn->close();
                 </div>
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="password_hash" placeholder="Senha" required>
+                    <input type="password" name="password_hash" placeholder="Palavra-passe" required>
                 </div>
                 <button type="submit">
                     <i class="fas fa-sign-in-alt"></i>
@@ -120,7 +120,7 @@ $conn->close();
             </form>
             
             <div class="forgot-password-link" style="text-align:center; margin-top:15px;">
-                <a href="recuperar_password.php">Esqueceu-se da password?</a>
+                <a href="recuperar_password.php">Esqueceu-se da palavra-passe?</a>
             </div>
             
             <p class="register-link">

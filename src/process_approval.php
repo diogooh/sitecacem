@@ -74,11 +74,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $mail->CharSet = 'UTF-8'; // Garante que caracteres especiais sejam exibidos corretamente
             $mail->isHTML(true);
-            $mail->Subject = 'Status da sua conta - ACC';
+            $mail->Subject = 'Estado da sua Conta - ACC';
             $mail->Body = "Olá {$user['nome']},<br><br>";
-            $mail->Body .= $status === 'aprovado' 
-                ? "Sua conta foi aprovada! Você já pode acessar o sistema."
-                : "Sua conta foi rejeitada. Por favor, entre em contato com a administração para mais informações.";
+            if ($status === 'aprovado') {
+                $mail->Body .= "Temos o prazer de informar que a sua conta na plataforma ACC foi aprovada.<br>Já pode aceder ao sistema com as suas credenciais.<br><br>Bem-vindo à família ACC!<br><br>Com os melhores cumprimentos,<br>Associação Clube de Cacém";
+            } else {
+                $mail->Body .= "Lamentamos informar que a sua conta na plataforma ACC não foi aprovada.<br>Para mais informações, por favor contacte a administração do clube.<br><br>Com os melhores cumprimentos,<br>Associação Clube de Cacém";
+            }
 
             $mail->send();
         } catch (Exception $e) {

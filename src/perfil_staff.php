@@ -659,12 +659,6 @@ if (isset($_SESSION['alert'])) {
                         <button class="action-button" onclick="document.getElementById('foto_perfil').click()">
                             <i class="fas fa-camera"></i> Alterar Foto
                         </button>
-                        <button class="action-button" onclick="showChangePasswordModal()">
-                            <i class="fas fa-key"></i> Alterar Senha
-                        </button>
-                        <button class="action-button" onclick="showNotificationSettings()">
-                            <i class="fas fa-bell"></i> Notificações
-                        </button>
                     </div>
                 </div>
 
@@ -690,11 +684,11 @@ if (isset($_SESSION['alert'])) {
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="telefone">Telefone</label>
+                                    <label for="telefone">Telemóvel</label>
                                     <input type="tel" id="telefone" name="telefone" value="<?php echo htmlspecialchars($staff['telefone'] ?? ''); ?>">
                                 </div>
 
-                                <button type="submit" name="update_profile" class="save-button">Salvar Alterações</button>
+                                <button type="submit" name="update_profile" class="save-button">Guardar Alterações</button>
                             </form>
                         </div>
                     </div>
@@ -705,31 +699,23 @@ if (isset($_SESSION['alert'])) {
                             <h2>Segurança</h2>
                         </div>
                         <div class="card-content">
-                            <div class="security-status">
-                                <i class="fas fa-shield-alt"></i>
-                                <div class="security-info">
-                                    <div class="security-title">Conta Protegida</div>
-                                    <div class="security-description">Sua conta está protegida com autenticação de dois fatores</div>
-                                </div>
-                            </div>
-
                             <form action="perfil_staff.php" method="post">
                                 <div class="form-group">
-                                    <label for="current_password">Senha Atual</label>
+                                    <label for="current_password">Palavra-passe Atual</label>
                                     <input type="password" id="current_password" name="current_password" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="new_password">Nova Senha</label>
+                                    <label for="new_password">Nova Palavra-passe</label>
                                     <input type="password" id="new_password" name="new_password" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="confirm_password">Confirmar Nova Senha</label>
+                                    <label for="confirm_password">Confirmar Nova Palavra-passe</label>
                                     <input type="password" id="confirm_password" name="confirm_password" required>
                                 </div>
 
-                                <button type="submit" name="update_password" class="save-button">Atualizar Senha</button>
+                                <button type="submit" name="update_password" class="save-button">Atualizar Palavra-passe</button>
                             </form>
                         </div>
                     </div>

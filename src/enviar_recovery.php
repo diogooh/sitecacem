@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'antunesdiogo06@gmail.com';
-            $mail->Password = 'rfde ypaa agsx ohik'; // Senha de app do Gmail
+            $mail->Password = 'rfde ypaa agsx ohik'; // Palavra-passe de app do Gmail
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
@@ -53,9 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             
             $mail->CharSet = 'UTF-8'; // Garante que caracteres especiais sejam exibidos corretamente
             $mail->isHTML(true);
-            $mail->Subject = 'Recuperação de Password - ACC';
+            $mail->Subject = 'Recuperação de Palavra-passe - ACC';
             $link = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/nova_password.php?token=' . $token;
-            $mail->Body = "Olá {$user['nome']},<br><br>Recebemos um pedido para recuperar a sua password.<br>Para definir uma nova password, clique no link abaixo:<br><a href='$link'>$link</a><br><br>Se não pediu esta recuperação, ignore este email.";
+            $mail->Body = "Olá {$user['nome']},<br><br>Recebemos um pedido para recuperação da sua palavra-passe na plataforma ACC.<br>Para definir uma nova palavra-passe, por favor clique no link abaixo:<br><a href='$link'>Definir nova palavra-passe</a><br><br>Se não foi você que fez este pedido, ignore este email.<br><br>Com os melhores cumprimentos,<br>Associação Clube de Cacém";
             $mail->send();
             $_SESSION['recovery_msg'] = 'Foi enviado um email com instruções para recuperar a sua password.';
         } catch (Exception $e) {

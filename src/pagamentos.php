@@ -155,7 +155,7 @@ $stmt_mensalidades->close();
             <div class="logout-section">
                 <form action="logout.php" method="post">
                     <button type="submit" class="logout-btn">
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                        <i class="fas fa-sign-out-alt"></i> Terminar Sessão
                     </button>
                 </form>
             </div>

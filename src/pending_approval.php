@@ -25,10 +25,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['status'] != 'pendente') {
                 <i class="fas fa-user-clock"></i>
             </div>
             
-            <h2>Registo em Análise</h2>
+            <h2>Registro em Análise</h2>
             
             <p class="status-text">
-                Obrigado por se registar! O seu registo está sendo analisado pela equipa admin.
+                Obrigado por se registrar! Seu cadastro está sendo analisado pela nossa equipe administrativa.
             </p>
 
             <div class="loading-indicator">
@@ -51,7 +51,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['status'] != 'pendente') {
             </div>
 
             <div class="contact-info">
-                <p>Dúvidas? Entre em contacto connosco através do email <a href="mailto:suporte@acc.pt">suporte@acc.pt</a></p>
+                <p>Dúvidas? Entre em contato conosco através do email <a href="mailto:suporte@acc.pt">suporte@acc.pt</a></p>
             </div>
         </div>
     </div>
