@@ -16,7 +16,7 @@ Bem-vindo à plataforma oficial do clube ACC! Este projeto foi desenvolvido com 
 ## 🛠️ Tecnologias Utilizadas
 
 - **PHP** (backend)
-- **MySQL** (base de dados)
+- **MySQL, PHPMYADMIN** (base de dados)
 - **HTML5, CSS3 e JavaScript**
 - **PHPMailer** (envio de emails)
 - **XAMPP** (ambiente de desenvolvimento local)
