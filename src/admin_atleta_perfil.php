@@ -655,9 +655,6 @@ if (isset($_POST['upload_doc'])) {
                 <a href="admin_dashboard.php" class="menu-item">
                     <i class="fas fa-home"></i> Dashboard
                 </a>
-                <a href="admin_modalidades.php" class="menu-item">
-                    <i class="fas fa-dumbbell"></i> Modalidades
-                </a>
                 <a href="admin_escaloes.php" class="menu-item active">
                     <i class="fas fa-users"></i> Escalões
                 </a>
