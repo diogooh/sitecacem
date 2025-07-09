@@ -118,9 +118,9 @@ if (isset($_GET['marcar_lida'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mensagens - ACC</title>
-    <link rel="stylesheet" href="dashboard_nav.css">
-    <link rel="stylesheet" href="dashboard_atleta.css">
-    <link rel="stylesheet" href="mensagens.css">
+    <link rel="stylesheet" href="/sitecacem/src/nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/mensagens.css">
+    <link rel="stylesheet" href="/sitecacem/src/dashboard_nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -130,9 +130,9 @@ if (isset($_GET['marcar_lida'])) {
             <div class="staff-header">
                 <img src="<?php
                     if (!empty($staff['foto_perfil'])) {
-                        echo str_replace('../uploads/', '/uploads/', $staff['foto_perfil']);
+                        echo str_replace(['../uploads/', 'uploads/'], '/sitecacem/uploads/', $staff['foto_perfil']);
                     } else {
-                        echo '../img/default-avatar.png';
+                        echo '/sitecacem/img/default-avatar.png';
                     }
                 ?>" alt="Perfil">
                 <h3><?php echo htmlspecialchars($staff['nome']); ?></h3>
@@ -265,6 +265,8 @@ if (isset($_GET['marcar_lida'])) {
             </div>
         </div>
     </div>
+
+    <?php include __DIR__ . '/footer.php'; ?>
 
     <?php if (isset($_SESSION['message'])): ?>
         <div id="alertMessage" class="alert <?php echo $_SESSION['message']['type']; ?>">

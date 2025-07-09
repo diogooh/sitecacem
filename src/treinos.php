@@ -52,17 +52,117 @@ if ($stmt) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Treinos - Clube Cacem</title>
-    <link rel="stylesheet" href="dashboard_nav.css">
-    <link rel="stylesheet" href="dashboard_atleta.css">
-    <link rel="stylesheet" href="treinos.css">
+    <link rel="stylesheet" href="/sitecacem/src/dashboard_atleta.css">
+    <link rel="stylesheet" href="/sitecacem/src/treinos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .dashboard-layout {
+            display: flex !important;
+            min-height: 100vh;
+            background: #f4f6fb;
+        }
+        .dashboard-sidebar {
+            width: 270px !important;
+            background: linear-gradient(135deg, #004080 0%, #002b57 100%) !important;
+            color: #fff !important;
+            min-height: 100vh !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            box-shadow: 0 4px 24px rgba(26,35,126,0.10);
+        }
+        .sidebar-header {
+            padding: 40px 20px 20px 20px !important;
+            text-align: center !important;
+        }
+        .sidebar-header img {
+            width: 110px !important;
+            height: 110px !important;
+            border-radius: 50% !important;
+            border: 4px solid #fff !important;
+            margin-bottom: 10px !important;
+            object-fit: cover !important;
+        }
+        .sidebar-header h3 {
+            color: #fff !important;
+            font-size: 1.3em !important;
+            margin: 0 0 5px 0 !important;
+        }
+        .sidebar-header p {
+            color: #b3c6e0 !important;
+            font-size: 1em !important;
+            margin: 0 !important;
+        }
+        .sidebar-menu {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 5px !important;
+            margin-top: 30px !important;
+        }
+        .sidebar-menu .menu-item {
+            color: #fff !important;
+            padding: 14px 30px !important;
+            text-decoration: none !important;
+            font-size: 1.08em !important;
+            border: none !important;
+            background: none !important;
+            border-radius: 8px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            transition: background 0.2s !important;
+        }
+        .sidebar-menu .menu-item.active, .sidebar-menu .menu-item:hover {
+            background: rgba(255,255,255,0.12) !important;
+        }
+        .logout-section {
+            margin-top: auto !important;
+            padding: 30px 20px !important;
+        }
+        .logout-btn {
+            width: 100% !important;
+            background: #dc3545 !important;
+            color: #fff !important;
+            border: none !important;
+            border-radius: 8px !important;
+            padding: 12px 0 !important;
+            font-size: 1.1em !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: background 0.2s !important;
+        }
+        .logout-btn:hover {
+            background: #b52a37 !important;
+        }
+        @media (max-width: 900px) {
+            .dashboard-layout {
+                flex-direction: column !important;
+            }
+            .dashboard-sidebar {
+                width: 100% !important;
+                min-height: auto !important;
+                flex-direction: row !important;
+                overflow-x: auto !important;
+            }
+            .sidebar-menu {
+                flex-direction: row !important;
+                gap: 0 !important;
+                margin-top: 0 !important;
+            }
+            .sidebar-menu .menu-item {
+                padding: 10px 12px !important;
+                font-size: 1em !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="dashboard-layout">
         <!-- Sidebar -->
         <div class="dashboard-sidebar">
             <div class="sidebar-header">
-                <img src="<?php echo !empty($atleta['foto_perfil']) ? '../' . $atleta['foto_perfil'] : 'img/default-avatar.png'; ?>" alt="Perfil">
+                <img src="<?php echo !empty($atleta['foto_perfil']) ? '/sitecacem/' . ltrim(str_replace(['../uploads/', 'uploads/'], 'uploads/', $atleta['foto_perfil']), '/') : '/sitecacem/img/default-avatar.png'; ?>" alt="Perfil">
                 <h3><?php echo htmlspecialchars($atleta['nome']); ?></h3>
                 <p>CIPA: <?php echo htmlspecialchars($atleta['cip'] ?? 'N/A'); ?></p>
             </div>

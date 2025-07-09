@@ -418,10 +418,12 @@ $stmt->close();
         <div class="dashboard-sidebar staff-sidebar">
             <div class="staff-header">
                 <img src="<?php
-                    if (!empty($user['foto_perfil'])) {
-                        echo str_replace('../uploads/', '/uploads/', $user['foto_perfil']);
+                    $foto = !empty($user['foto_perfil']) ? $user['foto_perfil'] : '';
+                    $foto_path = __DIR__ . '/../' . ltrim($foto, '/');
+                    if ($foto && file_exists($foto_path)) {
+                        echo str_replace(['../uploads/', 'uploads/'], '/sitecacem/uploads/', $foto);
                     } else {
-                        echo '../img/default-avatar.png';
+                        echo '/sitecacem/img/default-avatar.png';
                     }
                 ?>" alt="Perfil">
                 <h3><?php echo htmlspecialchars($user['nome']); ?></h3>

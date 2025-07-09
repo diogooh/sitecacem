@@ -10,11 +10,11 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atlético Clube do Cacém</title>
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="/sitecacem/src/nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/homepage.css">
 </head>
 <body>
-    <?php include 'nav.php'; ?>
+    <?php include __DIR__ . '/nav.php'; ?>
     
     <section class="content">
         <div class="text-container">
@@ -25,8 +25,8 @@ if (session_status() === PHP_SESSION_NONE) {
             </p>
             <a href="sobre-nos.php">Clica aqui para saberes mais de nós -></a>
         </div>
-        <img src="/img/fotojogo1.jpeg" alt="Foto da Equipa">
+        <img src="/sitecacem/img/fotojogo1.jpeg" alt="Foto da Equipa">
     </section>
 </body>
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/footer.php'; ?>
 </html>

@@ -50,11 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'], $_POST['email
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactos - Atlético Clube do Cacém</title>
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="contactos.css">
+    <link rel="stylesheet" href="/sitecacem/src/nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/contactos.css">
 </head>
 <body>
-    <?php include 'nav.php'; ?>
+    <?php include __DIR__ . '/nav.php'; ?>
     
     <section class="contact-container">
         <h2>Entre em Contacto Connosco</h2>
@@ -93,5 +93,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome'], $_POST['email
         </div>
     </section>
 </body>
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/footer.php'; ?>
 </html>

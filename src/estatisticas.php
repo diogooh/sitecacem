@@ -61,10 +61,12 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estatísticas - ACC</title>
-    <link rel="stylesheet" href="dashboard_nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/estatisticas.css">
     <link rel="stylesheet" href="dashboard_atleta.css"> <!-- Reutilizando estilos base do dashboard -->
     <link rel="stylesheet" href="mensagens.css"> <!-- Para estilos de alerta, se necessário -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/sitecacem/src/dashboard_nav.css">
     <style>
         /* Estilos específicos para a página de Estatísticas */
         .stats-grid {
@@ -156,9 +158,9 @@ $stmt->close();
             <div class="staff-header">
                 <img src="<?php
                     if (!empty($staff_info['foto_perfil'])) {
-                        echo str_replace('../uploads/', '/uploads/', $staff_info['foto_perfil']);
+                        echo str_replace(['../uploads/', 'uploads/'], '/sitecacem/uploads/', $staff_info['foto_perfil']);
                     } else {
-                        echo '../img/default-avatar.png';
+                        echo '/sitecacem/img/default-avatar.png';
                     }
                 ?>" alt="Perfil">
                 <h3><?php echo htmlspecialchars($staff_info['nome']); ?></h3>

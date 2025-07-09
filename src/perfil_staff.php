@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
     $user_id = $_SESSION['user_id'];
     $email = $_POST['email'];
     $telefone = $_POST['telefone'] ?? null;
+    $nome = $_POST['nome'];
     // Get other fields if added to the form
 
     $update_fields = [];
@@ -26,6 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
     $bind_values = [];
 
     // Add fields to update based on form input
+    $update_fields[] = 'nome = ?';
+    $bind_params .= 's';
+    $bind_values[] = $nome;
     $update_fields[] = 'email = ?';
     $bind_params .= 's';
     $bind_values[] = $email;
@@ -187,10 +191,11 @@ if (isset($_SESSION['alert'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil Staff - ACC</title>
-    <link rel="stylesheet" href="dashboard_nav.css">
-    <link rel="stylesheet" href="dashboard_atleta.css">
+    <link rel="stylesheet" href="/sitecacem/src/nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/perfil_atleta.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/sitecacem/src/dashboard_nav.css">
     <style>
         body {
             font-family: 'Inter', Arial, sans-serif;
@@ -552,9 +557,9 @@ if (isset($_SESSION['alert'])) {
             <div class="staff-header">
                 <img src="<?php
                     if (!empty($staff['foto_perfil'])) {
-                        echo str_replace('../uploads/', '/uploads/', $staff['foto_perfil']);
+                        echo str_replace(['../uploads/', 'uploads/'], '/sitecacem/uploads/', $staff['foto_perfil']);
                     } else {
-                        echo '../img/default-avatar.png';
+                        echo '/sitecacem/img/default-avatar.png';
                     }
                 ?>" alt="Perfil">
                 <h3><?php echo htmlspecialchars($staff['nome']); ?></h3>
@@ -622,7 +627,7 @@ if (isset($_SESSION['alert'])) {
                 <div class="profile-sidebar">
                     <div class="profile-header">
                         <div class="profile-image-container">
-                            <img src="<?php echo (!empty($staff['foto_perfil'])) ? str_replace('../uploads/', '/uploads/', $staff['foto_perfil']) : '../img/default-avatar.png'; ?>" alt="Perfil" class="profile-image">
+                            <img src="<?php echo (!empty($staff['foto_perfil'])) ? str_replace(['../uploads/', 'uploads/'], '/sitecacem/uploads/', $staff['foto_perfil']) : '/sitecacem/img/default-avatar.png'; ?>" alt="Perfil" class="profile-image">
                             <label for="foto_perfil" class="profile-image-edit">
                                 <i class="fas fa-camera"></i>
                             </label>

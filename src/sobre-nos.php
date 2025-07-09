@@ -9,8 +9,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nós - Atlético Clube do Cacém</title>
-    <link rel="stylesheet" href="../src/nav.css">
-    <link rel="stylesheet" href="../src/footer.css">
+    <link rel="stylesheet" href="/sitecacem/src/nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/footer.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -65,7 +65,7 @@ if (session_status() === PHP_SESSION_NONE) {
 </head>
 <body>
 
-<?php include '../src/nav.php'; ?>
+<?php include __DIR__ . '/nav.php'; ?>
 
 <div class="container">
     <h1>Sobre Nós</h1>
@@ -95,7 +95,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <p>Promovemos a integração de atletas, treinadores, dirigentes e famílias num ambiente saudável e formativo. Acreditamos que o desporto é uma ferramenta poderosa para moldar cidadãos mais conscientes, ativos e solidários.</p>
 </div>
 
-<?php include '../src/footer.php'; ?>
+<?php include __DIR__ . '/footer.php'; ?>
 
 </body>
 </html>

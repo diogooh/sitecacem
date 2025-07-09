@@ -723,10 +723,12 @@ $atletas = $stmt->get_result();
         <div class="dashboard-sidebar staff-sidebar">
             <div class="staff-header">
                 <img src="<?php
-                    if (!empty($staff['foto_perfil'])) {
-                        echo str_replace('../uploads/', '/uploads/', $staff['foto_perfil']);
+                    $foto = !empty($staff['foto_perfil']) ? $staff['foto_perfil'] : '';
+                    $foto_path = __DIR__ . '/../' . ltrim($foto, '/');
+                    if ($foto && file_exists($foto_path)) {
+                        echo str_replace(['../uploads/', 'uploads/'], '/sitecacem/uploads/', $foto);
                     } else {
-                        echo '../img/default-avatar.png';
+                        echo '/sitecacem/img/default-avatar.png';
                     }
                 ?>" alt="Perfil">
                 <h3><?php echo htmlspecialchars($staff['nome']); ?></h3>
@@ -875,9 +877,6 @@ $atletas = $stmt->get_result();
                             <button type="button" class="btn-atribuir" onclick="openModalAtribuir(event, <?php echo $atleta['id']; ?>, '<?php echo isset($atleta['modalidade_id']) ? $atleta['modalidade_id'] : ''; ?>', '<?php echo isset($atleta['escalao_id']) ? $atleta['escalao_id'] : ''; ?>')">
                                 <i class="fas fa-user-plus"></i> Atribuir
                             </button>
-                            <a href="editar_atleta.php?id=<?php echo $atleta['id']; ?>" class="btn-editar">
-                                <i class="fas fa-edit"></i> Editar
-                            </a>
                         </div>
                     </div>
                 <?php endwhile; ?>

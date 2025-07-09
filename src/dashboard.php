@@ -10,11 +10,11 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área Cliente - Atlético Clube do Cacém</title>
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="dashboard.php.css">
+    <link rel="stylesheet" href="/sitecacem/src/nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/dashboard.css">
 </head>
 <body>
-    <?php include 'nav.php'; ?>
+    <?php include __DIR__ . '/nav.php'; ?>
     <section class="dashboard-container">
         <div class="dashboard-box">
             <h2>Bem-vindo à Dashboard</h2>
@@ -22,5 +22,5 @@ if (session_status() === PHP_SESSION_NONE) {
         </div>
     </section>
 </body>
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/footer.php'; ?>
 </html>

@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url('/img/fundo.jpg') no-repeat center center/cover;
+    background: url('/sitecacem/img/fundo.jpg') no-repeat center center/cover;
     padding-top: 80px;
 }
 

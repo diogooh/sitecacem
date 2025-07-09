@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <link rel="stylesheet" href="footer.css">
 <header>
     <a href="../src/homepage.php">
-        <img src="../img/logoclub.png" alt="Logo do Clube">
+        <img src="/sitecacem/img/logoclub.png" alt="Logo">
     </a>
 
     <nav>
@@ -39,7 +39,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <?php endif; ?>
             <a href="logout.php" class="logout-btn">Logout</a>
         <?php else: ?>
-            <a href="/src/login.php" class="login-btn">Entrar</a>
+            <a href="/sitecacem/src/login.php" class="login-btn">Entrar</a>
         <?php endif; ?>
     </div>
 </header>

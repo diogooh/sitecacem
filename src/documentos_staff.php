@@ -143,10 +143,12 @@ if ($stmt) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerir Documentos - ACC</title>
-    <link rel="stylesheet" href="dashboard_nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/documentos_staff.css">
     <link rel="stylesheet" href="dashboard_atleta.css"> <!-- Reutilizando estilos base do dashboard -->
     <link rel="stylesheet" href="mensagens.css"> <!-- Para estilos de alerta -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/sitecacem/src/dashboard_nav.css">
     <style>
         /* Estilos específicos para esta página */
         .document-card {
@@ -296,9 +298,9 @@ if ($stmt) {
             <div class="staff-header">
                 <img src="<?php
                     if (!empty($staff_info['foto_perfil'])) {
-                        echo str_replace('../uploads/', '/uploads/', $staff_info['foto_perfil']);
+                        echo str_replace(['../uploads/', 'uploads/'], '/sitecacem/uploads/', $staff_info['foto_perfil']);
                     } else {
-                        echo '../img/default-avatar.png';
+                        echo '/sitecacem/img/default-avatar.png';
                     }
                 ?>" alt="Perfil">
                 <h3><?php echo htmlspecialchars($staff_info['nome']); ?></h3>
@@ -438,6 +440,7 @@ if ($stmt) {
 
         </div>
     </div>
+    <?php include __DIR__ . '/footer.php'; ?>
 
     <script>
         function confirmDeleteDocument(id) {

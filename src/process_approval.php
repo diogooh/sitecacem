@@ -93,3 +93,58 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     exit();
 }
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processar Aprovação - ACC</title>
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <?php include __DIR__ . '/nav.php'; ?>
+</head>
+<body>
+    <div class="account-pages my-5 pt-sm-0">
+        <div class="container">
+            <!-- end row -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Processar Aprovação</h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="">
+                                <input type="hidden" name="action" id="action">
+                                <input type="hidden" name="user_id" id="user_id">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="user_id" class="form-label">Usuário</label>
+                                            <select class="form-control" id="user_selector" onchange="loadUserDetails()">
+                                                <option value="">Selecione um usuário</option>
+                                                <?php
+                                                $stmt = $conn->prepare("SELECT id, nome FROM users WHERE tipo = 'pendente' ORDER BY nome ASC");
+                                                $stmt->execute();
+                                                $result = $stmt->get_result();
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo '<option value="' . $row['id'] . '">' . htmlspecialchars($row['nome']) . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Adicione outros campos do formulário aqui -->
+                                <button type="submit" class="btn btn-primary">Processar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php include __DIR__ . '/footer.php'; ?>
+</body>
+</html>

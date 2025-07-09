@@ -7,9 +7,9 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Password - ACC</title>
-    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/nav.css">
     <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="/sitecacem/src/login.css">
     <style>
         .recovery-container {
             max-width: 400px;
@@ -58,7 +58,7 @@ session_start();
     </style>
 </head>
 <body>
-<?php include 'nav.php'; ?>
+<?php include __DIR__ . '/nav.php'; ?>
     <div class="recovery-container">
         <h2>Recuperar Palavra-passe</h2>
         <form method="post" action="enviar_recovery.php">
@@ -67,6 +67,6 @@ session_start();
         </form>
         <a href="login.php">Voltar ao início de sessão</a>
     </div>
-    <?php include 'footer.php'; ?>
+    <?php include __DIR__ . '/footer.php'; ?>
 </body>
 </html> 

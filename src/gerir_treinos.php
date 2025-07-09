@@ -191,7 +191,15 @@ $treinos = $stmt->get_result();
     <div class="dashboard-layout">
         <aside class="dashboard-sidebar staff-sidebar">
             <div class="staff-header">
-                <img src="<?php echo htmlspecialchars($staff['foto_perfil']); ?>" alt="Foto do Staff">
+                <img src="<?php
+    $foto = !empty($staff['foto_perfil']) ? $staff['foto_perfil'] : '';
+    $foto_path = __DIR__ . '/../' . ltrim($foto, '/');
+    if ($foto && file_exists($foto_path)) {
+        echo str_replace(['../uploads/', 'uploads/'], '/sitecacem/uploads/', $foto);
+    } else {
+        echo '/sitecacem/img/default-avatar.png';
+    }
+?>" alt="Foto do Staff">
                 <h3><?php echo htmlspecialchars($staff['nome']); ?></h3>
                 <p><?php echo ucfirst($staff['tipo']); ?></p>
             </div>

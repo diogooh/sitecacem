@@ -48,12 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registo - ACC</title>
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="/sitecacem/src/nav.css">
+    <link rel="stylesheet" href="/sitecacem/src/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <?php include 'nav.php'; ?>
+    <?php include __DIR__ . '/nav.php'; ?>
 
     <div class="register-page">
         <div class="register-wrapper">

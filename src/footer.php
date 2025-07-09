@@ -17,7 +17,7 @@
             <h3>Segue-nos</h3>
             <div class="social-icons">
                 <a href="https://www.facebook.com/accacem1941/?locale=pt_PT" target="_blank">
-                    <img src="../img/facebook.png" alt="Facebook" class="social-icon">
+                    <img src="/sitecacem/img/facebook.png" alt="Facebook" class="social-icon">
                 </a>
                 <a href="https://www.instagram.com/accacem1941/" target="_blank">
                     <img src="../img/instagram.png" alt="Instagram" class="social-icon">

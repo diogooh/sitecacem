@@ -34,8 +34,8 @@ $stmt_mensalidades->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Mensalidades - ACC</title>
-    <link rel="stylesheet" href="dashboard_nav.css">
-    <link rel="stylesheet" href="dashboard_atleta.css">
+    <link rel="stylesheet" href="/sitecacem/src/dashboard_atleta.css">
+    <link rel="stylesheet" href="/sitecacem/src/pagamentos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
@@ -124,37 +124,35 @@ $stmt_mensalidades->close();
 <body>
     <div class="dashboard-layout">
         <!-- Sidebar -->
-        <div class="dashboard-sidebar">
-            <div class="sidebar-header">
-                <img src="<?php echo !empty($atleta['foto_perfil']) ? '../' . $atleta['foto_perfil'] : 'img/default-avatar.png'; ?>" alt="Perfil">
-                <h3><?php echo htmlspecialchars($atleta['nome']); ?></h3>
-                <p>CIPA: <?php echo htmlspecialchars($atleta['cip'] ?? 'N/A'); ?></p>
+        <div class="dashboard-sidebar" style="width:270px; background:linear-gradient(135deg,#004080 0%,#002b57 100%); color:#fff; min-height:100vh; padding:0; display:flex; flex-direction:column; align-items:stretch; box-shadow:0 4px 24px rgba(26,35,126,0.10);">
+            <div class="sidebar-header" style="padding:40px 20px 20px 20px; text-align:center;">
+                <img src="<?php echo !empty($atleta['foto_perfil']) ? '/sitecacem/' . ltrim(str_replace(['../uploads/', 'uploads/'], 'uploads/', $atleta['foto_perfil']), '/') : '/sitecacem/img/default-avatar.png'; ?>" alt="Perfil" style="width:110px; height:110px; border-radius:50%; border:4px solid #fff; margin-bottom:10px; object-fit:cover;">
+                <h3 style="color:#fff; font-size:1.3em; margin:0 0 5px 0;"><?php echo htmlspecialchars($atleta['nome']); ?></h3>
+                <p style="color:#b3c6e0; font-size:1em; margin:0;">CIPA: <?php echo htmlspecialchars($atleta['cip'] ?? 'N/A'); ?></p>
             </div>
-            
-            <div class="sidebar-menu">
-                <a href="dashboard_atleta.php" class="menu-item">
+            <div class="sidebar-menu" style="display:flex; flex-direction:column; gap:5px; margin-top:30px;">
+                <a href="dashboard_atleta.php" class="menu-item" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
                     <i class="fas fa-home"></i> Dashboard
                 </a>
-                <a href="perfil_atleta.php" class="menu-item">
+                <a href="perfil_atleta.php" class="menu-item" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
                     <i class="fas fa-user"></i> Perfil
                 </a>
-                <a href="treinos.php" class="menu-item">
+                <a href="treinos.php" class="menu-item" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
                     <i class="fas fa-running"></i> Treinos
                 </a>
-                <a href="jogos.php" class="menu-item">
+                <a href="jogos.php" class="menu-item" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
                     <i class="fas fa-futbol"></i> Jogos
                 </a>
-                <a href="mensagens.php" class="menu-item">
+                <a href="mensagens.php" class="menu-item" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
                     <i class="fas fa-envelope"></i> Mensagens
                 </a>
-                <a href="pagamentos.php" class="menu-item active">
+                <a href="pagamentos.php" class="menu-item active" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s; background:rgba(255,255,255,0.12);">
                     <i class="fas fa-euro-sign"></i> Pagamentos
                 </a>
             </div>
-
-            <div class="logout-section">
+            <div class="logout-section" style="margin-top:auto; padding:30px 20px;">
                 <form action="logout.php" method="post">
-                    <button type="submit" class="logout-btn">
+                    <button type="submit" class="logout-btn" style="width:100%; background:#dc3545; color:#fff; border:none; border-radius:8px; padding:12px 0; font-size:1.1em; font-weight:600; cursor:pointer; transition:background 0.2s;">
                         <i class="fas fa-sign-out-alt"></i> Terminar Sessão
                     </button>
                 </form>
