@@ -296,7 +296,9 @@ $conn->close();
                 <a href="admin_financas.php" class="menu-item">
                     <i class="fas fa-dollar-sign"></i> Finanças
                 </a>
-                <!-- Outros itens do menu podem ser adicionados aqui -->
+                <a href="admin_equipamentos.php" class="menu-item">
+                    <i class="fas fa-tshirt"></i> Equipamentos
+                </a>
             </div>
             <div class="logout-button">
                 <form method="post" action="logout.php">

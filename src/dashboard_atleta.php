@@ -88,6 +88,14 @@ $recent_mensalidades_stmt->bind_param("i", $_SESSION['user_id']);
 $recent_mensalidades_stmt->execute();
 $recent_mensalidades = $recent_mensalidades_stmt->get_result();
 $recent_mensalidades_stmt->close();
+
+// Buscar equipamentos atuais do atleta
+$stmt = $conn->prepare('SELECT * FROM equipamentos WHERE atleta_id = ?');
+$stmt->bind_param('i', $_SESSION['user_id']);
+$stmt->execute();
+$result_equip = $stmt->get_result();
+$equip = $result_equip->fetch_assoc();
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -209,6 +217,75 @@ $recent_mensalidades_stmt->close();
                 font-size: 1em !important;
             }
         }
+        .equipamentos-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .equipamento-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+            padding: 10px 16px;
+            min-width: 0;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+        .equip-icone {
+            font-size: 1.5em;
+            color: #1976d2;
+            flex-shrink: 0;
+        }
+        .equip-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .equip-nome {
+            font-weight: 600;
+            color: #222;
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+        .equip-valor {
+            font-size: 0.95em;
+            color: #1976d2;
+            margin-bottom: 0;
+        }
+        .equip-status {
+            border-radius: 10px;
+            padding: 2px 10px;
+            font-size: 0.95em;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 8px;
+        }
+        .equip-status.entregue {
+            background: #e8f5e9;
+            color: #28a745;
+        }
+        .equip-status.pendente {
+            background: #fff3cd;
+            color: #ffc107;
+        }
+        .equip-status i {
+            font-size: 1em;
+        }
+        .equipamentos-explicacao {
+            font-size: 0.97em;
+            color: #555;
+            margin-bottom: 6px;
+            margin-top: 2px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -222,27 +299,13 @@ $recent_mensalidades_stmt->close();
             </div>
             
             <div class="sidebar-menu">
-                <a href="dashboard_atleta.php" class="menu-item active">
-                    <i class="fas fa-home"></i> Dashboard
-                </a>
-                <a href="perfil_atleta.php" class="menu-item">
-                    <i class="fas fa-user"></i> Perfil
-                </a>
-                <a href="treinos.php" class="menu-item">
-                    <i class="fas fa-running"></i> Treinos
-                </a>
-                <a href="jogos.php" class="menu-item">
-                    <i class="fas fa-futbol"></i> Jogos
-                </a>
-                <a href="mensagens.php" class="menu-item">
-                    <i class="fas fa-envelope"></i> Mensagens
-                    <?php if ($mensagens['count'] > 0): ?>
-                        <span class="badge"><?php echo $mensagens['count']; ?></span>
-                    <?php endif; ?>
-                </a>
-                <a href="pagamentos.php" class="menu-item">
-                    <i class="fas fa-euro-sign"></i> Pagamentos
-                </a>
+                <a href="dashboard_atleta.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'dashboard_atleta.php' ? ' active' : '' ?>"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="perfil_atleta.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'perfil_atleta.php' ? ' active' : '' ?>"><i class="fas fa-user"></i> Perfil</a>
+                <a href="treinos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'treinos.php' ? ' active' : '' ?>"><i class="fas fa-dumbbell"></i> Treinos</a>
+                <a href="jogos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'jogos.php' ? ' active' : '' ?>"><i class="fas fa-futbol"></i> Jogos</a>
+                <a href="mensagens.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'mensagens.php' ? ' active' : '' ?>"><i class="fas fa-envelope"></i> Mensagens</a>
+                <a href="pagamentos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'pagamentos.php' ? ' active' : '' ?>"><i class="fas fa-euro-sign"></i> Pagamentos</a>
+                <a href="atleta_equipamentos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'atleta_equipamentos.php' ? ' active' : '' ?>"><i class="fas fa-tshirt"></i> Equipamentos</a>
             </div>
 
             <div class="logout-section">
@@ -375,53 +438,78 @@ $recent_mensalidades_stmt->close();
                     </div>
                 </div>
 
-                <!-- Card de Equipamentos -->
+                <!-- Card de Equipamentos Atribuídos -->
                 <div class="dashboard-card">
                     <div class="card-header">
-                        <h3><i class="fas fa-tshirt"></i> Equipamentos</h3>
+                        <h3><i class="fas fa-tshirt"></i> Equipamentos Atribuídos</h3>
                     </div>
                     <div class="card-content">
-                        <ul class="equipment-list">
-                            <li class="equipment-item">
-                                <div class="equipment-info">
-                                    <div class="equipment-icon">
-                                        <i class="fas fa-tshirt"></i>
-                                    </div>
-                                    <span class="equipment-name">Equipamento Principal</span>
+                        <div class="equipamentos-explicacao">
+                            Aqui podes consultar o estado dos teus equipamentos atribuídos.<br>
+                            O estado será atualizado assim que o clube entregar cada item.
+                        </div>
+                        <div class="equipamentos-grid">
+                            <div class="equipamento-card">
+                                <div class="equip-icone"><i class="fas fa-tshirt"></i></div>
+                                <div class="equip-info">
+                                    <span class="equip-nome">Equip. Jogo</span>
+                                    <span class="equip-valor"><?= htmlspecialchars($equip['equip_jogo']) ?></span>
                                 </div>
-                                <span class="equipment-status status-entregue">Entregue</span>
-                            </li>
-                            
-                            <li class="equipment-item">
-                                <div class="equipment-info">
-                                    <div class="equipment-icon">
-                                        <i class="fas fa-tshirt"></i>
-                                    </div>
-                                    <span class="equipment-name">Equipamento Alternativo</span>
+                                <?php if ($equip['equip_jogo_status'] == 'entregue'): ?>
+                                    <div class="equip-status entregue"><i class="fas fa-check-circle"></i> Entregue</div>
+                                <?php else: ?>
+                                    <div class="equip-status pendente"><i class="fas fa-clock"></i> Pendente</div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="equipamento-card">
+                                <div class="equip-icone"><i class="fas fa-tshirt"></i></div>
+                                <div class="equip-info">
+                                    <span class="equip-nome">Alt. A</span>
+                                    <span class="equip-valor"><?= htmlspecialchars($equip['alt_a']) ?></span>
                                 </div>
-                                <span class="equipment-status status-entregue">Entregue</span>
-                            </li>
-                            
-                            <li class="equipment-item">
-                                <div class="equipment-info">
-                                    <div class="equipment-icon">
-                                        <i class="fas fa-running"></i>
-                                    </div>
-                                    <span class="equipment-name">Kit Treino</span>
+                                <?php if ($equip['alt_a_status'] == 'entregue'): ?>
+                                    <div class="equip-status entregue"><i class="fas fa-check-circle"></i> Entregue</div>
+                                <?php else: ?>
+                                    <div class="equip-status pendente"><i class="fas fa-clock"></i> Pendente</div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="equipamento-card">
+                                <div class="equip-icone"><i class="fas fa-tshirt"></i></div>
+                                <div class="equip-info">
+                                    <span class="equip-nome">Alt. B</span>
+                                    <span class="equip-valor"><?= htmlspecialchars($equip['alt_b']) ?></span>
                                 </div>
-                                <span class="equipment-status status-pendente">Pendente</span>
-                            </li>
-                            
-                            <li class="equipment-item">
-                                <div class="equipment-info">
-                                    <div class="equipment-icon">
-                                        <i class="fas fa-socks"></i>
-                                    </div>
-                                    <span class="equipment-name">Meias Oficiais</span>
+                                <?php if ($equip['alt_b_status'] == 'entregue'): ?>
+                                    <div class="equip-status entregue"><i class="fas fa-check-circle"></i> Entregue</div>
+                                <?php else: ?>
+                                    <div class="equip-status pendente"><i class="fas fa-clock"></i> Pendente</div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="equipamento-card">
+                                <div class="equip-icone"><i class="fas fa-running"></i></div>
+                                <div class="equip-info">
+                                    <span class="equip-nome">Fato Treino</span>
+                                    <span class="equip-valor"><?= htmlspecialchars($equip['fato_treino']) ?></span>
                                 </div>
-                                <span class="equipment-status status-entregue">Entregue</span>
-                            </li>
-                        </ul>
+                                <?php if ($equip['fato_treino_status'] == 'entregue'): ?>
+                                    <div class="equip-status entregue"><i class="fas fa-check-circle"></i> Entregue</div>
+                                <?php else: ?>
+                                    <div class="equip-status pendente"><i class="fas fa-clock"></i> Pendente</div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="equipamento-card">
+                                <div class="equip-icone"><i class="fas fa-suitcase"></i></div>
+                                <div class="equip-info">
+                                    <span class="equip-nome">Mala</span>
+                                    <span class="equip-valor"><?= htmlspecialchars($equip['mala']) ?></span>
+                                </div>
+                                <?php if ($equip['mala_status'] == 'entregue'): ?>
+                                    <div class="equip-status entregue"><i class="fas fa-check-circle"></i> Entregue</div>
+                                <?php else: ?>
+                                    <div class="equip-status pendente"><i class="fas fa-clock"></i> Pendente</div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -266,8 +266,6 @@ if (isset($_GET['marcar_lida'])) {
         </div>
     </div>
 
-    <?php include __DIR__ . '/footer.php'; ?>
-
     <?php if (isset($_SESSION['message'])): ?>
         <div id="alertMessage" class="alert <?php echo $_SESSION['message']['type']; ?>">
             <i class="fas <?php echo ($_SESSION['message']['type'] == 'success') ? 'fa-check-circle' : 'fa-exclamation-circle'; ?>"></i>

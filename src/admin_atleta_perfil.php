@@ -2,6 +2,9 @@
 session_start();
 require 'db.php';
 
+// Definir o timezone correto no PHP
+date_default_timezone_set('Europe/Lisbon');
+
 // Obter o ID do atleta da URL
 $atleta_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
@@ -34,6 +37,19 @@ if ($atleta_id > 0) {
 if (!$atleta) {
     // Redirecionar de volta para a página de escalões ou dashboard
     header("Location: admin_escaloes.php"); // Ou para admin_dashboard.php
+    exit();
+}
+
+// Processar atualização do valor pago (deve estar antes de qualquer output HTML)
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['atualizar_valor_pago'])) {
+    $mensalidade_id = (int) $_POST['mensalidade_id'];
+    $novo_valor_pago = (float) $_POST['novo_valor_pago'];
+    $atleta_id_redir = (int) $_POST['atleta_id'];
+    $stmt_update_pago = $conn->prepare("UPDATE mensalidades SET valor_pago = ? WHERE id = ?");
+    $stmt_update_pago->bind_param("di", $novo_valor_pago, $mensalidade_id);
+    $stmt_update_pago->execute();
+    $stmt_update_pago->close();
+    header("Location: admin_atleta_perfil.php?id=" . $atleta_id_redir);
     exit();
 }
 
@@ -310,15 +326,42 @@ if (isset($_POST['upload_doc'])) {
             padding-bottom: 2rem;
             border-bottom: 1px solid rgba(0,0,0,0.1);
             margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
-        .profile-photo {
-            width: 150px;
-            height: 150px;
+        .profile-photo-admin img {
+            width: 140px;
+            height: 140px;
+            max-width: 100%;
+            max-height: 140px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--primary-light);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 900px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.2rem;
+            }
+            .profile-photo-admin img {
+                width: 100px;
+                height: 100px;
+                max-width: 100%;
+                max-height: 100px;
+            }
         }
 
         .profile-info {
@@ -664,6 +707,9 @@ if (isset($_POST['upload_doc'])) {
                 <a href="admin_financas.php" class="menu-item">
                     <i class="fas fa-dollar-sign"></i> Finanças
                 </a>
+                <a href="admin_equipamentos.php" class="menu-item">
+                    <i class="fas fa-tshirt"></i> Equipamentos
+                </a>
             </div>
             <div class="logout-button">
                 <form method="post" action="logout.php">
@@ -799,6 +845,8 @@ if (isset($_POST['upload_doc'])) {
                                 <tr>
                                     <th>Mês/Ano</th>
                                     <th>Valor</th>
+                                    <th>Pago</th>
+                                    <th>Em Falta</th>
                                     <th>Status</th>
                                     <th>Data Pagamento</th>
                                     <th>Ações</th>
@@ -809,6 +857,26 @@ if (isset($_POST['upload_doc'])) {
                                 <tr>
                                     <td><?= sprintf('%02d', $mensalidade['mes']) ?>/<?= $mensalidade['ano'] ?></td>
                                     <td><?= htmlspecialchars($mensalidade['valor']) ?> €</td>
+                                    <td>
+                                        <?= htmlspecialchars($mensalidade['valor_pago']) ?> €
+                                        <form method="post" style="display:inline;" class="form-edit-pago">
+                                            <input type="hidden" name="mensalidade_id" value="<?= $mensalidade['id'] ?>">
+                                            <input type="hidden" name="atleta_id" value="<?= $atleta['id'] ?>">
+                                            <input type="number" name="novo_valor_pago" value="<?= htmlspecialchars($mensalidade['valor_pago']) ?>" min="0" step="0.01" style="width:70px; display:none;">
+                                            <button type="button" class="btn-edit-pago" style="background:none; border:none; cursor:pointer; color:#1976d2; font-size:1.1em; vertical-align:middle;">
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                            <button type="submit" name="atualizar_valor_pago" class="btn-save-pago" style="display:none; background:#1976d2; color:#fff; border:none; border-radius:4px; padding:2px 8px; margin-left:4px; cursor:pointer; font-size:0.95em;">
+                                                Guardar
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <?php 
+                                            $em_falta = $mensalidade['valor'] - $mensalidade['valor_pago'];
+                                            echo $em_falta > 0 ? number_format($em_falta,2) . ' €' : '0 €';
+                                        ?>
+                                    </td>
                                     <td>
                                         <?php
                                             $status = strtolower(htmlspecialchars($mensalidade['status']));
@@ -828,20 +896,21 @@ if (isset($_POST['upload_doc'])) {
                                                 $status = strtolower(htmlspecialchars($mensalidade['status']));
                                                 $mensalidade_id = $mensalidade['id'];
                                                 $atleta_id_current = $atleta['id'];
+                                                $em_falta = $mensalidade['valor'] - $mensalidade['valor_pago'];
                                             ?>
-                                            <?php if ($status == 'pendente'): ?>
+                                            <?php if ($status == 'pendente' && $em_falta <= 0): ?>
                                                 <form method="post" style="display:inline;">
                                                     <input type="hidden" name="mensalidade_id" value="<?= $mensalidade_id ?>">
                                                     <input type="hidden" name="novo_status" value="Paga">
-                                                    <input type="hidden" name="atleta_id" value="<?= $atleta_id_current ?>"> <!-- Manter o atleta_id para redirecionamento -->
-                                                    <button type="submit" name="atualizar_status_mensalidade" class="btn-add btn-small" style="background-color: #28a745;"><i class="fas fa-check"></i> Paga</button>
+                                                    <input type="hidden" name="atleta_id" value="<?= $atleta_id_current ?>">
+                                                    <button type="submit" name="atualizar_status_mensalidade" class="btn-add btn-small" style="background-color: #28a745;"><i class="fas fa-check"></i> Encerrar</button>
                                                 </form>
                                             <?php elseif ($status == 'paga'): ?>
                                                 <form method="post" style="display:inline;">
                                                     <input type="hidden" name="mensalidade_id" value="<?= $mensalidade_id ?>">
                                                     <input type="hidden" name="novo_status" value="Pendente">
-                                                    <input type="hidden" name="atleta_id" value="<?= $atleta_id_current ?>"> <!-- Manter o atleta_id para redirecionamento -->
-                                                    <button type="submit" name="atualizar_status_mensalidade" class="btn-remove btn-small"><i class="fas fa-times"></i> Pendente</button>
+                                                    <input type="hidden" name="atleta_id" value="<?= $atleta_id_current ?>">
+                                                    <button type="submit" name="atualizar_status_mensalidade" class="btn-remove btn-small"><i class="fas fa-times"></i> Reabrir</button>
                                                 </form>
                                             <?php endif; ?>
                                         </div>
@@ -888,5 +957,20 @@ if (isset($_POST['upload_doc'])) {
             </div>
         </div>
     </div>
+
+    <!-- Mover o script para o final da página -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.btn-edit-pago').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                var form = btn.closest('form');
+                form.querySelector('input[name=novo_valor_pago]').style.display = 'inline-block';
+                form.querySelector('.btn-save-pago').style.display = 'inline-block';
+                btn.style.display = 'none';
+            });
+        });
+    });
+    </script>
 </body>
 </html> 

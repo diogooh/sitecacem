@@ -89,10 +89,11 @@ body {
     transform: translateX(5px);
 }
 
+/* Adicionando estilo para o item de menu Equipamentos */
 .menu-item.active {
-    background: rgba(255,255,255,0.15);
-    color: white;
-    font-weight: 600;
+    background: rgba(25, 118, 210, 0.15);
+    color: #1976d2;
+    font-weight: bold;
 }
 
 .menu-item i {

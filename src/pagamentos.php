@@ -131,23 +131,26 @@ $stmt_mensalidades->close();
                 <p style="color:#b3c6e0; font-size:1em; margin:0;">CIPA: <?php echo htmlspecialchars($atleta['cip'] ?? 'N/A'); ?></p>
             </div>
             <div class="sidebar-menu" style="display:flex; flex-direction:column; gap:5px; margin-top:30px;">
-                <a href="dashboard_atleta.php" class="menu-item" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
+                <a href="dashboard_atleta.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'dashboard_atleta.php' ? ' active' : '' ?>" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
                     <i class="fas fa-home"></i> Dashboard
                 </a>
-                <a href="perfil_atleta.php" class="menu-item" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
+                <a href="perfil_atleta.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'perfil_atleta.php' ? ' active' : '' ?>" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
                     <i class="fas fa-user"></i> Perfil
                 </a>
-                <a href="treinos.php" class="menu-item" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
-                    <i class="fas fa-running"></i> Treinos
+                <a href="treinos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'treinos.php' ? ' active' : '' ?>" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
+                    <i class="fas fa-dumbbell"></i> Treinos
                 </a>
-                <a href="jogos.php" class="menu-item" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
+                <a href="jogos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'jogos.php' ? ' active' : '' ?>" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
                     <i class="fas fa-futbol"></i> Jogos
                 </a>
-                <a href="mensagens.php" class="menu-item" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
+                <a href="mensagens.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'mensagens.php' ? ' active' : '' ?>" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
                     <i class="fas fa-envelope"></i> Mensagens
                 </a>
-                <a href="pagamentos.php" class="menu-item active" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s; background:rgba(255,255,255,0.12);">
+                <a href="pagamentos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'pagamentos.php' ? ' active' : '' ?>" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s; background:rgba(255,255,255,0.12);">
                     <i class="fas fa-euro-sign"></i> Pagamentos
+                </a>
+                <a href="atleta_equipamentos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'atleta_equipamentos.php' ? ' active' : '' ?>" style="color:#fff; padding:14px 30px; text-decoration:none; font-size:1.08em; border:none; background:none; border-radius:8px; display:flex; align-items:center; gap:12px; transition:background 0.2s;">
+                    <i class="fas fa-tshirt"></i> Equipamentos
                 </a>
             </div>
             <div class="logout-section" style="margin-top:auto; padding:30px 20px;">

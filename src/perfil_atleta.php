@@ -44,23 +44,26 @@ $stmt->close();
             </div>
             
             <div class="sidebar-menu">
-                <a href="dashboard_atleta.php" class="menu-item">
+                <a href="dashboard_atleta.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'dashboard_atleta.php' ? ' active' : '' ?>">
                     <i class="fas fa-home"></i> Dashboard
                 </a>
-                <a href="perfil_atleta.php" class="menu-item active">
+                <a href="perfil_atleta.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'perfil_atleta.php' ? ' active' : '' ?>">
                     <i class="fas fa-user"></i> Perfil
                 </a>
-                <a href="treinos.php" class="menu-item">
-                    <i class="fas fa-running"></i> Treinos
+                <a href="treinos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'treinos.php' ? ' active' : '' ?>">
+                    <i class="fas fa-dumbbell"></i> Treinos
                 </a>
-                <a href="jogos.php" class="menu-item">
+                <a href="jogos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'jogos.php' ? ' active' : '' ?>">
                     <i class="fas fa-futbol"></i> Jogos
                 </a>
-                <a href="mensagens.php" class="menu-item">
+                <a href="mensagens.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'mensagens.php' ? ' active' : '' ?>">
                     <i class="fas fa-envelope"></i> Mensagens
                 </a>
-                <a href="pagamentos.php" class="menu-item">
+                <a href="pagamentos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'pagamentos.php' ? ' active' : '' ?>">
                     <i class="fas fa-euro-sign"></i> Pagamentos
+                </a>
+                <a href="atleta_equipamentos.php" class="menu-item<?= basename($_SERVER['PHP_SELF']) == 'atleta_equipamentos.php' ? ' active' : '' ?>">
+                    <i class="fas fa-tshirt"></i> Equipamentos
                 </a>
             </div>
 

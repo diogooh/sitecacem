@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Jun-2025 às 15:22
+-- Tempo de geração: 17-Jul-2025 às 18:29
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.0.30
 
@@ -283,7 +283,10 @@ INSERT INTO `mensagens` (`id`, `atleta_id`, `remetente_id`, `destinatario_id`, `
 (0, 17, 16, 17, 'teste 2', 'tesatgaewsgdasdg', '2025-06-23 14:06:31', 1),
 (0, 17, 16, 16, '0', 'teste 3', '2025-06-23 14:06:58', 1),
 (0, 17, 17, 16, 'teste 5', 'teste5', '2025-06-23 14:21:16', 1),
-(0, 0, 16, 0, 'Re: teste 5', 'teste helder para pires', '2025-06-23 14:21:35', 0);
+(0, 0, 16, 0, 'Re: teste 5', 'teste helder para pires', '2025-06-23 14:21:35', 0),
+(0, 21, 21, 16, 'macdonalds', 'bk', '2025-06-27 17:35:33', 1),
+(0, 21, 21, 16, 'teste', 'gadfhgadh', '2025-07-09 21:10:01', 1),
+(0, 17, 17, 16, 'vai poh crlh', '4rseag', '2025-07-15 21:44:20', 1);
 
 -- --------------------------------------------------------
 
@@ -313,9 +316,9 @@ INSERT INTO `mensalidades` (`id`, `atleta_id`, `mes`, `ano`, `valor`, `status`, 
 (8, 17, 11, 2025, 34.00, 'Paga', '2025-05-27'),
 (9, 17, 1, 2026, 35.00, 'Pendente', NULL),
 (10, 17, 2, 2026, 35.00, 'Paga', '2025-05-27'),
-(11, 17, 3, 2026, 35.00, 'Pendente', NULL),
+(11, 17, 3, 2026, 35.00, 'Paga', '2025-07-15'),
 (12, 17, 4, 2026, 35.00, 'Paga', '2025-05-27'),
-(13, 17, 5, 2026, 35.00, 'Pendente', NULL),
+(13, 17, 5, 2026, 35.00, 'Paga', '2025-07-15'),
 (14, 17, 6, 2026, 35.00, 'Paga', '2025-05-27'),
 (15, 17, 7, 2026, 35.00, 'Paga', '2025-05-27'),
 (16, 17, 8, 2026, 35.00, 'Paga', '2025-05-27'),
@@ -323,11 +326,8 @@ INSERT INTO `mensalidades` (`id`, `atleta_id`, `mes`, `ano`, `valor`, `status`, 
 (18, 17, 10, 2026, 35.00, 'Pendente', NULL),
 (19, 17, 11, 2026, 35.00, 'Paga', '2025-05-27'),
 (20, 17, 12, 2026, 35.00, 'Paga', '2025-05-27'),
-(21, 18, 2, 2025, 45.00, 'Pendente', NULL),
 (22, 17, 7, 2024, 45.00, 'Paga', '2025-05-27'),
 (26, 17, 2, 2025, 35.00, 'Paga', '2025-05-27'),
-(27, 18, 6, 2026, 35.00, 'Pendente', NULL),
-(28, 19, 4, 2025, 35.00, 'Pendente', NULL),
 (29, 21, 2, 2025, 25.00, 'Pendente', NULL),
 (30, 21, 5, 2025, 25.00, 'Pendente', NULL),
 (31, 21, 6, 2025, 25.00, 'Pendente', NULL),
@@ -347,7 +347,8 @@ INSERT INTO `mensalidades` (`id`, `atleta_id`, `mes`, `ano`, `valor`, `status`, 
 (45, 26, 3, 2025, 35.00, 'Pendente', NULL),
 (46, 26, 4, 2025, 35.00, 'Paga', '2025-06-25'),
 (47, 26, 5, 2025, 35.00, 'Pendente', NULL),
-(48, 26, 6, 2026, 35.00, 'Pendente', NULL);
+(48, 26, 6, 2026, 35.00, 'Pendente', NULL),
+(49, 27, 9, 2024, 25.00, 'Pendente', NULL);
 
 -- --------------------------------------------------------
 
@@ -510,13 +511,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nome`, `email`, `password_hash`, `tipo`, `data_registo`, `status`, `data_registro`, `data_nascimento`, `genero`, `telefone`, `nif`, `morada`, `foto_perfil`, `escalao`, `posicao`, `numero`, `pe_dominante`, `exame_medico_data`, `seguro_desportivo`, `numero_socio`, `cip`, `modalidade_id`, `escalao_id`) VALUES
 (15, 'Diogo Cardoso Antunes', 'antunesdiogo06@gmail.com', '$2y$10$ZNeNOz2Hiy1q4dAnMGGQWOOx3iQzjzQ5HEEHrVPHqMy/aouOWa/M2', 'admin', '2025-05-19 19:08:05', 'aprovado', '2025-05-19 19:08:05', '2006-04-28', NULL, '912203131', '205680500', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '53', NULL, NULL),
-(16, 'Helder Moutinho', 'diogo_antunes06@hotmail.com', '$2y$10$1d1tKrpzv8pqglP77VZYnunHhF074NdlaWPZgulCR4vTxSGf/IH16', 'treinador', '2025-05-19 19:09:52', 'aprovado', '2025-05-19 19:09:52', '2424-04-24', NULL, '912203131', '242423421', NULL, '../uploads/perfil_16_1748439716.png', NULL, NULL, NULL, NULL, NULL, NULL, 1, '	92866', NULL, 7),
-(17, 'Pedro Pires', 'pedropires@gmail.com', '$2y$10$MmP2MVjQ79Vp/uiHbqT7QOCFcmG3NKHIUgHjH4bLSrHfHY/IerQGe', 'atleta', '2025-05-23 14:48:59', 'aprovado', '2025-05-23 14:48:59', '2000-03-04', 'M', '920420291', '534652562', 'Rua da Paz nº10 1ESQ', '../uploads/perfil_17_1748286590.png', 'Seniores', 'Guarda-Redes', 1, 'Esquerdo', NULL, NULL, NULL, '235915', 1, 7),
-(18, 'Joana Silva', 'joana@gmail.com', '$2y$10$33GJQpHbSeAQ8prcIlzxfuC7P4nv.XZnOsZi1.5NjnnX.TZ/Q6MDi', 'atleta', '2025-05-26 18:47:13', 'aprovado', '2025-05-26 18:47:13', '2000-02-22', NULL, '920420291', '645357324', NULL, '../uploads/perfil_18_1748995585.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '34241', 1, 4),
-(19, 'jonas benfica', 'jonas@gmail.com', '$2y$10$assuE.BEf5VG7UXy.RU9fu5vq4Axon1wH5S8uDKEWnajMPbdHxdf2', 'atleta', '2025-05-27 00:37:03', 'aprovado', '2025-05-27 00:37:03', '1990-02-14', NULL, '910240242', '464327257', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '53253256', 1, 6),
-(21, 'João Tinoco', 'joaotinoco@gmail.com', '$2y$10$baruPD1Idj7BcASnS55jCewouKkyyzB6ghgnb9ow34pCWdQNaSOk2', 'atleta', '2025-06-12 15:06:14', 'aprovado', '2025-06-12 15:06:14', '1999-02-14', NULL, '902304903', '514514515', 'Rua da Paz nº10 1ESQ', 'uploads/perfil_21_684af7d69153b.jpg', 'Seniores', 'Pivot', 27, 'Direito', NULL, NULL, NULL, '875221', 1, 7),
+(16, 'Helder Moutinho', 'diogo_antunes06@hotmail.com', '$2y$10$1d1tKrpzv8pqglP77VZYnunHhF074NdlaWPZgulCR4vTxSGf/IH16', 'treinador', '2025-05-19 19:09:52', 'aprovado', '2025-05-19 19:09:52', '2424-04-24', NULL, '912203131', '242423421', NULL, '../uploads/perfil_16_1752092702.png', NULL, NULL, NULL, NULL, NULL, NULL, 1, '	92866', NULL, 7),
+(17, 'Pedro Pires', 'pedropires@gmail.com', '$2y$10$MmP2MVjQ79Vp/uiHbqT7QOCFcmG3NKHIUgHjH4bLSrHfHY/IerQGe', 'atleta', '2025-05-23 14:48:59', 'aprovado', '2025-05-23 14:48:59', '2000-03-04', 'M', '920420291', '534652562', 'Rua da Paz nº10 1ESQ', 'uploads/perfil_17_686ecd35880e2.png', 'Seniores', 'Guarda-Redes', 1, 'Esquerdo', NULL, NULL, NULL, '235915', 1, 7),
+(21, 'João Tinoco', 'joaotinoco@gmail.com', '$2y$10$baruPD1Idj7BcASnS55jCewouKkyyzB6ghgnb9ow34pCWdQNaSOk2', 'atleta', '2025-06-12 15:06:14', 'aprovado', '2025-06-12 15:06:14', '1999-02-14', NULL, '902304903', '514514515', 'Rua da Paz nº10 1ESQ', 'uploads/perfil_21_686ecc6ccb716.png', 'Seniores', 'Pivot', 27, 'Direito', NULL, NULL, NULL, '875221', 1, 7),
 (24, 'Miguel Silvério', 'miguelsilverio@gmail.com', '$2y$10$LUjkbIIda0Bppt.s4wzcg.jC7Zt4z.2djSVSc6OD4jOHtrtIxPm6y', 'atleta', '2025-06-23 12:20:10', 'aprovado', '2025-06-23 12:20:10', '1904-02-04', NULL, '412414124', '414214124', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '325252', 1, 5),
-(26, 'Francisco Nobre', 'franciscokiko.nobre@gmail.com', '$2y$10$Lg1tw5Feg/1cAkzVSwNnROZHcc0Ls98lqpL8wVdteTS3IZrA5icdy', 'atleta', '2025-06-24 23:27:18', 'aprovado', '2025-06-24 23:27:18', '2000-02-24', NULL, '215252315', '452642572', NULL, 'uploads/perfil_26_685b359316fa5.png', 'Juniores', 'Central', 45, 'Direito', NULL, NULL, NULL, '41541', 1, 6);
+(26, 'Francisco Nobre', 'franciscokiko.nobre@gmail.com', '$2y$10$Lg1tw5Feg/1cAkzVSwNnROZHcc0Ls98lqpL8wVdteTS3IZrA5icdy', 'treinador', '2025-06-24 23:27:18', 'aprovado', '2025-06-24 23:27:18', '2000-02-24', NULL, '215252315', '452642572', NULL, 'uploads/perfil_26_685b359316fa5.png', 'Juniores', 'Central', 45, 'Direito', NULL, NULL, NULL, '41541', 1, NULL),
+(27, 'joao antunes', '2222092@escoladigital.com', '$2y$10$09WL0odwCXN0TzsmQ/mIa.0TOEFpbsmodUxJ6OKnP0CZilqQOYtJe', 'atleta', '2025-07-09 22:07:47', 'aprovado', '2025-07-09 22:07:47', '2111-02-04', NULL, '920420291', '421354151', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '21411', 1, 4);
 
 --
 -- Índices para tabelas despejadas
@@ -725,7 +725,7 @@ ALTER TABLE `jogos`
 -- AUTO_INCREMENT de tabela `mensalidades`
 --
 ALTER TABLE `mensalidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de tabela `modalidades`
@@ -761,7 +761,7 @@ ALTER TABLE `treinos`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Restrições para despejos de tabelas

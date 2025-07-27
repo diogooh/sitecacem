@@ -232,6 +232,9 @@ $pendentes = $stmt->get_result();
                 <a href="admin_financas.php" class="menu-item">
                     <i class="fas fa-dollar-sign"></i> Finanças
                 </a>
+                <a href="admin_equipamentos.php" class="menu-item">
+                    <i class="fas fa-tshirt"></i> Equipamentos
+                </a>
             </div>
             <div class="logout-button">
                 <form method="post" action="logout.php">

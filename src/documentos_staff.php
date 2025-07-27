@@ -440,7 +440,6 @@ if ($stmt) {
 
         </div>
     </div>
-    <?php include __DIR__ . '/footer.php'; ?>
 
     <script>
         function confirmDeleteDocument(id) {
